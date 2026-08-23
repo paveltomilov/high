@@ -1,10 +1,56 @@
-# The Docker image that will be used to build your app
-image: node:lts
-create-pages:
-  pages:
-    # The folder that contains the files to be exposed at the Page URL
-    publish: public
-  rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+image: node:20-alpine
+
+variables:
+  PROJECT_NAME: "high"
+  DEPLOY_USER: "root"
+  DEPLOY_PATH: "/var/www/work/${PROJECT_NAME}"
+
+before_script:
+  # Простая проверка наличия переменной
+  - |
+    if [ -n "$DEPLOY_SSH_PRIVATE_KEY" ]; then
+      echo "✅ DEPLOY_SSH_PRIVATE_KEY is set"
+    else
+      echo "❌ ERROR: DEPLOY_SSH_PRIVATE_KEY is empty or not set"
+    fi
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - |
+    if [ -n "$DEPLOY_SSH_PRIVATE_KEY" ]; then
+      echo "$DEPLOY_SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_ed25519
+      chmod 600 ~/.ssh/id_ed25519
+      ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts 2>/dev/null
+      echo "✅ SSH key configured"
+    fi
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    # Старый сервер (резерв)
+    - mkdir -p /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME
+    - cp -rv public/* /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME/
+    # Новый сервер
+    - |
+      if [ -n "$DEPLOY_SSH_PRIVATE_KEY" ]; then
+        echo "🚀 Deploying to new server ${DEPLOY_HOST}..."
+        ssh ${DEPLOY_USER}@${DEPLOY_HOST} "mkdir -p ${DEPLOY_PATH}"
+        scp -r public/* ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/
+        echo "✅ Deploy completed"
+      else
+        echo "⚠️ SSH key not configured, skipping deploy to new server"
+      fi
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+mirror_to_github:
+  stage: deploy
+  script:
+    - git push https://paveltomilov:${GITHUB_TOKEN}@github.com/paveltomilov/${PROJECT_NAME}.git HEAD:main || true
+  only:
+    - main
+  needs: []
