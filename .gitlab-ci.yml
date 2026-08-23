@@ -36,7 +36,7 @@ pages:
       if [ -n "$DEPLOY_SSH_PRIVATE_KEY" ]; then
         echo "🚀 Deploying to new server ${DEPLOY_HOST}..."
         ssh ${DEPLOY_USER}@${DEPLOY_HOST} "mkdir -p ${DEPLOY_PATH}"
-        scp -r public/* ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/
+        - scp -r dist/* user@server:/path/to/deploy/
         echo "✅ Deploy completed"
       else
         echo "⚠️ SSH key not configured, skipping deploy to new server"
