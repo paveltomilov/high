@@ -44,9 +44,10 @@ build:
 pages:
   stage: deploy
   script:
-    # GitLab Pages (старый сервер)
-    - mkdir -p /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME
-    - cp -rv dist/* /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME/
+    # Создаем папку public (куда Pages будет публиковать)
+    - mkdir -p public
+    # Копируем собранные файлы из dist в public
+    - cp -rv dist/* public/
 
     # Внешний сервер (новый)
     - |
@@ -62,8 +63,7 @@ pages:
     - build
   artifacts:
     paths:
-      - dist/
-    publish: dist/
+      - dist
   only:
     - main
 
