@@ -62,7 +62,7 @@ pages:
     - build
   artifacts:
     paths:
-      - public
+      - dist
   only:
     - main
 
