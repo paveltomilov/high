@@ -30,7 +30,7 @@ pages:
     - npm run build
     # Старый сервер (резерв)
     - mkdir -p /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME
-    - cp -rv public/* /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME/
+    - cp -rv dist/* /var/opt/gitlab/gitlab-rails/shared/pages/root/work/$PROJECT_NAME/
     # Новый сервер
     - |
       if [ -n "$DEPLOY_SSH_PRIVATE_KEY" ]; then
