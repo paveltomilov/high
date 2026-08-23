@@ -1,0 +1,161 @@
+@use "../mixins/breakpoints" as *;
+
+.card {
+  &-text6 {
+    @include tablet {
+      width: 312px;
+    }
+
+    @include tablet4 {
+      width: 300px;
+    }
+
+    @include mobile {
+      max-width: 290px;
+    }
+  }
+
+  &-cont {
+    margin-top: auto;
+  }
+
+  &-content {
+    max-width: 290px;
+  }
+
+  &-image {
+    margin-bottom: 13px;
+
+    @include big-desktop {
+      margin-bottom: 17px;
+    }
+
+    @include mobile {
+      margin-bottom: 15px;
+    }
+  }
+
+  &-hashtag {
+    @include slach;
+    top: 6px;
+    right: 6px;
+
+    @include big-desktop {
+      padding: 6px 15px;
+      top: 8px;
+      right: 10px;
+    }
+
+    @include tablet {
+      right: 6px;
+    }
+
+    @include mobile {
+      top: 5px;
+      right: 5px;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 12px;
+      padding: 3px 15px;
+    }
+  }
+
+  &-text-1024 {
+    display: none;
+
+    @include big-desktop {
+      display: flex;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 137%;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+
+    @include big-desktop {
+      display: none;
+    }
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include mobile {
+      padding-right: 3px;
+    }
+  }
+
+  &-date {
+    margin-top: auto;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+  }
+
+  &-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #ff6e30;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: left;
+    padding: 14px 18px;
+    margin-top: auto;
+    transition:
+      border 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #ff6e30;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: #bc572b;
+      border: 2px solid #ff6e30;
+    }
+
+    &:active {
+      background-color: #ce4307;
+      border: 2px solid #ce4307;
+    }
+
+    @include mobile {
+      padding: 11px 15px;
+    }
+  }
+
+  &-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 7px;
+  }
+}
+
+.card3-1024 {
+  @include big-desktop {
+    width: 466px;
+  }
+
+  @include tablet2 {
+    width: auto;
+  }
+
+  @include tablet {
+    display: none;
+  }
+}

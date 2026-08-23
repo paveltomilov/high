@@ -1,10 +1,10 @@
-@import '../mixins/breakpoints';
+@use "../mixins/breakpoints" as *;
 
 .footer {
   background-color: #323232;
   padding: 17px 40px;
 
-  @include big-desctop {
+  @include big-desktop {
     padding: 17px 0;
   }
 
@@ -24,7 +24,6 @@
       flex-direction: column-reverse;
       justify-content: center;
     }
-
   }
 
   &__logo-img {
@@ -48,7 +47,7 @@
     margin-right: auto;
     flex-direction: column;
 
-    @include big-desctop {
+    @include big-desktop {
       margin-right: 144px;
     }
 
@@ -56,13 +55,11 @@
       margin-right: auto;
     }
 
-
     @include mobile {
       margin-right: 0;
       justify-content: center;
       align-items: center;
     }
-
   }
 
   &__logo-text {
@@ -89,7 +86,6 @@
     text-align: left;
   }
 
-
   &__quote p {
     color: rgb(202, 202, 202);
     font-size: 16px;
@@ -97,7 +93,6 @@
     line-height: 22px;
     text-align: left;
   }
-
 
   &__socials {
     text-align: center;
@@ -133,19 +128,17 @@
     justify-content: center;
     margin-left: 20px;
   }
-
 }
 
 .link {
   margin-right: 20px;
 
   &:hover path {
-    fill: #FF6E30;
+    fill: #ff6e30;
   }
 
   &:focus path {
-    fill: #BC572B;
-
+    fill: #bc572b;
   }
 
   &:focus {
@@ -153,20 +146,11 @@
   }
 
   &:active path {
-    fill: #BC572B;
+    fill: #bc572b;
   }
-
 }
 
 .icons-svg path {
-  fill: #CACACA;
-  transition: fill .3s ease-in-out;
-
-
-
-
-
-
-
-
+  fill: #cacaca;
+  transition: fill 0.3s ease-in-out;
 }

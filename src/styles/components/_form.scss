@@ -1,0 +1,111 @@
+@use "../mixins/breakpoints" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__input {
+    padding: 15px 14px 14px 23px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    background: rgb(233, 233, 233);
+    border: 1px solid transparent;
+
+    @include mobile {
+      padding: 10px 14px 10px 23px;
+      font-size: 14px;
+    }
+
+    ::placeholder {
+      color: rgb(153, 153, 153);
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:hover::placeholder {
+      color: #ff6e30;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid rgb(255, 110, 48);
+    }
+
+    @include tablet2 {
+      margin-bottom: 12px;
+    }
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__textarea {
+    height: 150px;
+    padding: 15px 14px 14px 23px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    border: 1px solid transparent;
+    background: rgb(233, 233, 233);
+
+    @include mobile {
+      padding-top: 10px;
+      font-size: 14px;
+    }
+
+    ::placeholder {
+      color: rgb(153, 153, 153);
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:hover::placeholder {
+      color: #ff6e30;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid rgb(255, 110, 48);
+    }
+  }
+
+  &__btn {
+    margin-top: auto;
+    align-self: flex-start;
+    background-color: #ff6600;
+    padding: 12px 18px 12px 17px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: left;
+    border: 3px solid #ff6600;
+    transition:
+      background-color 0.3s ease,
+      border 0.3s ease-in-out;
+
+    @include mobile {
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      background-color: #bc572b;
+      border: 3px solid #bc572b;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: #ff6e30;
+      border: 3px solid #ce4307;
+    }
+
+    &:active {
+      background-color: #ce4307;
+    }
+  }
+}

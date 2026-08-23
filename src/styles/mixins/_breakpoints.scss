@@ -1,4 +1,4 @@
-@mixin big-desctop {
+@mixin big-desktop {
   @media (max-width: 1024px) {
     @content;
   }
@@ -34,12 +34,6 @@
   }
 }
 
-// @mixin tablet4 {
-//   @media (max-width: 610px) {
-//     @content;
-//   }
-// }
-
 @mixin mobile {
   @media (max-width: 480px) {
     @content;
@@ -69,6 +63,4 @@
   font-weight: 400;
   line-height: 16px;
   text-align: center;
-
-
 }

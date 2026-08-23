@@ -1,4 +1,4 @@
-@import '../mixins/breakpoints';
+@use "../mixins/breakpoints" as *;
 
 .header {
   background-color: #323232;
@@ -21,17 +21,16 @@
     padding-top: 3px;
     margin-right: 138px;
 
-    @include big-desctop {
+    @include big-desktop {
       width: 170px;
       margin-right: 82px;
     }
 
     @include tablet {
       margin-right: auto;
-        padding-top: 27px;
-        padding-bottom: 22px;
-        margin-left: 27px;
-
+      padding-top: 27px;
+      padding-bottom: 22px;
+      margin-left: 27px;
     }
 
     @include mobile {
@@ -45,46 +44,43 @@
 .menulimiter {
   margin-right: auto;
 
-@include tablet {
-  background: #4a4a4a;
-  width: 100%;
-  padding: 12px 27px 11px;
-  overflow: scroll;
-  order: 3;
-  white-space: nowrap;
-}
+  @include tablet {
+    background: #4a4a4a;
+    width: 100%;
+    padding: 12px 27px 11px;
+    overflow: scroll;
+    order: 3;
+    white-space: nowrap;
+  }
 
-@include mobile {
-  background-color: #323232;
-  position: static;
-}
-
+  @include mobile {
+    background-color: #323232;
+    position: static;
+  }
 }
 
 .nav {
-
   @include mobile {
-      padding-top: 48px;
-      padding-left: 18px;
+    padding-top: 48px;
+    padding-left: 18px;
     flex-direction: column;
     position: fixed;
     height: 100vh;
     width: 100%;
-    top:66px;
+    top: 66px;
     left: -100%;
     right: 0;
     bottom: 0;
     z-index: 10;
     overflow-y: auto;
     background-color: black;
-    transition: all .4s;
-
+    transition: all 0.4s;
   }
 
   &__list {
     gap: 82px;
 
-    @include big-desctop {
+    @include big-desktop {
       gap: 33px;
     }
 
@@ -92,11 +88,11 @@
       gap: 76px;
     }
 
-@include mobile {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__item {
@@ -115,21 +111,23 @@
       line-height: 21px;
       text-align: left;
       background-color: inherit;
-      transition: color .3s ease-in-out, background-color .3s ease-in-out;
+      transition:
+        color 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
 
       &:focus {
         outline: none;
-        background-color: #BC572B;
+        background-color: #bc572b;
       }
 
       &:hover {
         background-color: inherit;
-        color: #FF6E30;
+        color: #ff6e30;
       }
 
       &:active {
         background-color: inherit;
-        color: #CE4307;
+        color: #ce4307;
       }
 
       @include mobile {
@@ -147,17 +145,15 @@
 
   @include tablet {
     margin-right: 27px;
-
   }
 
   @include mobile {
-   .search {
-    width: 20px;
-    height: 20px;
-   }
-   margin-right: 21px;
+    .search {
+      width: 20px;
+      height: 20px;
+    }
+    margin-right: 21px;
   }
-
 }
 
 .search path {
@@ -166,7 +162,7 @@
 }
 
 .btn__header:focus .search path {
-  fill: #CE4307;
+  fill: #ce4307;
 }
 
 .btn__header:focus {
@@ -174,18 +170,16 @@
 }
 
 .btn__header:hover .search path {
-  fill: #FF6E30;
+  fill: #ff6e30;
 }
 
 .btn__header:active .search path {
-  fill: #BC572B;
-
+  fill: #bc572b;
 }
 
 .open {
   display: flex !important;
   left: 0;
-
 }
 
 .burger {
@@ -198,64 +192,60 @@
   top: 84px;
   width: 20px;
   height: 18px;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 
-@include mobile {
-  display: flex;
+  @include mobile {
+    display: flex;
+  }
 }
-}
-
 
 .burger.active {
   width: 18px;
   height: 18px;
-  background-color: #CCCCCC;
+  background-color: #cccccc;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
 }
 
 .burger span {
-height: 2px;
-width: 100%;
-transform: scale(1);
-background-color: #fff;
+  height: 2px;
+  width: 100%;
+  transform: scale(1);
+  background-color: #fff;
 }
 
-
-.burger::before, .burger::after {
-content: "";
-position: absolute;
-height: 2px ;
-width: 100%;
-background-color: #fff;
-transition: all .4s ease-in-out;
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  transition: all 0.4s ease-in-out;
 }
 
 .burger::before {
   top: 0;
 }
 
-.burger::after{
+.burger::after {
   bottom: 0;
   width: 50%;
 }
 
 .burger.active span {
-transform: scale(0);
+  transform: scale(0);
 }
 
 .burger.active::before {
-top: 50%;
-transform: rotate(-45deg) translate(0, -50%);
-width: 80%;
-
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+  width: 80%;
 }
 
 .burger.active::after {
-bottom: 50%;
-transform: rotate(45deg) translate(0, 50%);
-width: 80%;
-
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+  width: 80%;
 }
-

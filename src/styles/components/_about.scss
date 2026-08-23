@@ -1,0 +1,223 @@
+@use "../mixins/breakpoints" as *;
+
+.about {
+  background-color: #323232;
+  padding-bottom: 71px;
+
+  @include big-desktop {
+    padding-bottom: 83px;
+  }
+
+  @include tablet {
+    padding-bottom: 61px;
+  }
+
+  @include mobile {
+    padding-bottom: 82px;
+  }
+
+  &__container {
+    justify-content: space-between;
+
+    @include tablet3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+  }
+
+  &__title {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31px;
+    text-align: left;
+    margin-bottom: 8px;
+
+    @include mobile {
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__left {
+    padding-top: 27px;
+    grid-area: 1 / 1 / 2 / 7;
+
+    @include big-desktop {
+      grid-area: 1 / 1 / 2 / 5;
+    }
+
+    @include tablet {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    @include tablet3 {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+
+    @include mobile {
+      width: auto;
+    }
+  }
+
+  &__text {
+    color: rgb(202, 202, 202);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: left;
+
+    @include mobile {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 179%;
+    }
+  }
+
+  &__right {
+    grid-area: 1 / 7 / 2 / 13;
+    padding-top: 60px;
+
+    @include big-desktop {
+      padding-top: 62px;
+      grid-column: 5 / 9;
+    }
+
+    @include tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include tablet3 {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 22px;
+    }
+
+    @include mobile {
+      height: 440px;
+    }
+
+    &-image {
+      margin-bottom: 21px;
+    }
+
+    &-text {
+      color: rgb(255, 255, 255);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: left;
+      margin-bottom: 16px;
+
+      @include tablet3 {
+        font-size: 18px;
+        line-height: 122%;
+      }
+    }
+  }
+
+  &__form {
+    @include big-desktop {
+      flex-direction: column;
+    }
+
+    &-input {
+      all: unset;
+      width: 430px;
+      padding: 14px 22px;
+      color: #cacaca;
+      border: 1px solid #4a4a4a;
+      background-color: #4a4a4a;
+      margin-right: auto;
+      transition:
+        border 0.3s ease-in-out,
+        color 0.3s ease-in-out;
+
+      @include big-desktop {
+        width: 296px;
+        margin-bottom: 20px;
+      }
+
+      @include tablet3 {
+        width: 232px;
+        padding: 10px 22px;
+      }
+
+      @include tablet4 {
+        width: 223px;
+      }
+
+      @include mobile {
+        width: 232px;
+      }
+
+      &::placeholder {
+        color: #cacaca;
+        transition: color 0.3s ease-in-out;
+
+        @include mobile {
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+
+      &:hover::placeholder {
+        color: #ff6e30;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid #ce4307;
+      }
+
+      &:active {
+        color: rgb(255, 255, 255);
+        border: 1px solid #4a4a4a;
+      }
+    }
+
+    &-btn {
+      color: white;
+      padding: 12px 12px 12px 21px;
+      background-color: #ff6e30;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 19px;
+      text-align: left;
+      border: 3px solid #ff6e30;
+      transition:
+        border 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+
+      @include big-desktop {
+        width: 126px;
+      }
+
+      @include mobile {
+        font-size: 14px;
+        width: 115px;
+        padding: 7px 12px 8px 21px;
+      }
+
+      &:hover {
+        background-color: #bc572b;
+        border: 3px solid #bc572b;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: #ff6e30;
+        border: 3px solid #ce4307;
+      }
+
+      &:active {
+        background-color: #ce4307;
+      }
+    }
+  }
+}

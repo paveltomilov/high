@@ -1,19 +1,16 @@
-
-@import "../mixins/breakpoints";
+@use "../mixins/breakpoints" as *;
 
 *:root {
-    --font-family: "Roboto", sans-serif;
-    --second-family: "TT Firs Neue", sans-serif;
-    --third-family: "Muller", sans-serif;
-  }
-
+  --font-family: "Roboto", sans-serif;
+  --second-family: "TT Firs Neue", sans-serif;
+  --third-family: "Muller", sans-serif;
+}
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 
 * {
   margin: 0;
@@ -22,7 +19,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -32,7 +29,7 @@ body {
 h2,
 h3,
 h4 {
-  font-family: 'TTFirsNeue', sans-serif;
+  font-family: "TTFirsNeue", sans-serif;
 }
 
 img {
@@ -86,7 +83,7 @@ a {
   padding: 0 15px;
   max-width: 1320px;
 
-  @include big-desctop {
+  @include big-desktop {
     padding: 0 30px;
   }
 
@@ -126,18 +123,16 @@ a {
   grid-template-columns: repeat(12, 1fr);
   gap: 30px;
 
-  @include big-desctop {
+  @include big-desktop {
     grid-template-columns: repeat(8, 1fr);
   }
 
   @include tablet {
     grid-template-columns: repeat(6, 1fr);
-
   }
 
   @include mobile {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-
   }
 }

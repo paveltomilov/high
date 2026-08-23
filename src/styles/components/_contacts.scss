@@ -1,0 +1,96 @@
+@use "../mixins/breakpoints" as *;
+
+.contacts {
+  padding-bottom: 69px;
+
+  @include big-desktop {
+    padding-bottom: 40px;
+  }
+
+  @include tablet {
+    padding-bottom: 48px;
+  }
+
+  &__container {
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 33px;
+    }
+  }
+
+  &__title {
+    color: rgb(32, 32, 32);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31px;
+    text-align: left;
+    margin-bottom: 21px;
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  &__form {
+    flex-direction: column;
+    height: 460px;
+    grid-area: 1 / 9 / 2 / 13;
+
+    @include big-desktop {
+      grid-area: 1 / 6 / 2 / 9;
+    }
+
+    @include tablet {
+      grid-area: 2 / 1 / 3 / 5;
+      height: 439px;
+    }
+
+    @include tablet4 {
+      grid-area: 2 / 1 / 3 / 7;
+      height: auto;
+    }
+
+    @include mobile {
+      height: 424px;
+      grid-area: 2 / 1 / 3 / 3;
+    }
+
+    &-title {
+      color: rgb(32, 32, 32);
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: left;
+      margin-top: -7px;
+      margin-bottom: 7px;
+
+      @include mobile {
+        font-size: 18px;
+        line-height: 122%;
+      }
+    }
+
+    &-descr {
+      color: rgb(153, 153, 153);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: left;
+      margin-bottom: 13px;
+
+      @include mobile {
+        margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 129%;
+      }
+    }
+  }
+}
