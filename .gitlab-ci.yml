@@ -62,7 +62,8 @@ pages:
     - build
   artifacts:
     paths:
-      - dist
+      - dist/
+    publish: dist/
   only:
     - main
 
